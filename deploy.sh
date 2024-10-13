@@ -2,6 +2,8 @@
 
 # TODO your deploy script implementation...
 
+sudo systemctl stop netflix.service
+git pull
 sudo systemctl restart daemon-tools
-sudo systemctl restart netflix.service
+sudo systemctl start netflix.service
 
