@@ -13,7 +13,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build and push image
-        run: |                 
+        run: |            
+          DOCKER_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD=${{ secrets.DOCKERHUB_PASSWORD }}
+          
+          if [ -z $DOCKER_USERNAME ] || [ -z $DOCKER_PASSWORD ]; then 
+            echo DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD secrets should be configured
+            exit 1
+          fi
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
           IMAGE_NAME=netflix-movie-catalog:${{ github.run_number }}
