@@ -23,6 +23,6 @@ jobs:
           fi
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
-          IMAGE_NAME=$DOCKER_USERNAME/netflix-movie-catalog:${{ github.run_number }}
+          IMAGE_NAME=$DOCKER_USERNAME/net_cat:${{ github.run_number }}
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
