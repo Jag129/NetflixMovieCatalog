@@ -25,4 +25,4 @@ jobs:
 
           IMAGE_NAME=netflix-movie-catalog:${{ github.run_number }}
           docker build -t $IMAGE_NAME .
-          docker push $IMAGE_NAME
+          docker push $DOCKER_USERNAME/$IMAGE_NAME
